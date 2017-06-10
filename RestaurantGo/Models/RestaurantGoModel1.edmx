@@ -1,0 +1,617 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RestaurantGoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Comentario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_RESTAURANTE" Type="int" />
+          <Property Name="ID_USUARIO" Type="int" />
+          <Property Name="COMENTARIO" Type="varchar" MaxLength="4000" />
+        </EntityType>
+        <EntityType Name="Comida">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="COMIDA" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Restaurante">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="100" />
+          <Property Name="DIRECCION" Type="varchar" MaxLength="1000" />
+          <Property Name="UBICACION" Type="varchar" MaxLength="1000" />
+          <Property Name="VALORACION" Type="int" />
+          <Property Name="PRECIO" Type="int" />
+        </EntityType>
+        <EntityType Name="RestauranteComida">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_RESTAURANTE" Type="int" />
+          <Property Name="ID_COMIDA" Type="int" />
+        </EntityType>
+        <EntityType Name="RestauranteValoracion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_USUARIO" Type="int" />
+          <Property Name="ID_RESTAURANTE" Type="int" />
+          <Property Name="VALOR" Type="int" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="100" />
+          <Property Name="CORREO" Type="varchar" MaxLength="100" />
+          <Property Name="CONTRASENA" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="UsuarioComida">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_USUARIO" Type="int" />
+          <Property Name="ID_COMIDA" Type="int" />
+        </EntityType>
+        <EntityType Name="UsuarioRestaurante">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_USUARIO" Type="int" />
+          <Property Name="ID_RESTAURANTE" Type="int" />
+        </EntityType>
+        <Association Name="FK__Comentari__ID_RE__2A4B4B5E">
+          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="0..1" />
+          <End Role="Comentario" Type="Self.Comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurante">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Comentario">
+              <PropertyRef Name="ID_RESTAURANTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Comentari__ID_US__29572725">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Comentario" Type="Self.Comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Comentario">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Restauran__ID_CO__398D8EEE">
+          <End Role="Comida" Type="Self.Comida" Multiplicity="0..1" />
+          <End Role="RestauranteComida" Type="Self.RestauranteComida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comida">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RestauranteComida">
+              <PropertyRef Name="ID_COMIDA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Restauran__ID_RE__35BCFE0A">
+          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="0..1" />
+          <End Role="RestauranteValoracion" Type="Self.RestauranteValoracion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurante">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RestauranteValoracion">
+              <PropertyRef Name="ID_RESTAURANTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Restauran__ID_RE__38996AB5">
+          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="0..1" />
+          <End Role="RestauranteComida" Type="Self.RestauranteComida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurante">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RestauranteComida">
+              <PropertyRef Name="ID_RESTAURANTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Restauran__ID_US__34C8D9D1">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="RestauranteValoracion" Type="Self.RestauranteValoracion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RestauranteValoracion">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UsuarioCo__ID_CO__31EC6D26">
+          <End Role="Comida" Type="Self.Comida" Multiplicity="0..1" />
+          <End Role="UsuarioComida" Type="Self.UsuarioComida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comida">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UsuarioComida">
+              <PropertyRef Name="ID_COMIDA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UsuarioCo__ID_US__30F848ED">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="UsuarioComida" Type="Self.UsuarioComida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UsuarioComida">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UsuarioRe__ID_RE__2E1BDC42">
+          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="0..1" />
+          <End Role="UsuarioRestaurante" Type="Self.UsuarioRestaurante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurante">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UsuarioRestaurante">
+              <PropertyRef Name="ID_RESTAURANTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UsuarioRe__ID_US__2D27B809">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="UsuarioRestaurante" Type="Self.UsuarioRestaurante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UsuarioRestaurante">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RestaurantGoModelStoreContainer">
+          <EntitySet Name="Comentario" EntityType="Self.Comentario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comida" EntityType="Self.Comida" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Restaurante" EntityType="Self.Restaurante" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RestauranteComida" EntityType="Self.RestauranteComida" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RestauranteValoracion" EntityType="Self.RestauranteValoracion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsuarioComida" EntityType="Self.UsuarioComida" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsuarioRestaurante" EntityType="Self.UsuarioRestaurante" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Comentari__ID_RE__2A4B4B5E" Association="Self.FK__Comentari__ID_RE__2A4B4B5E">
+            <End Role="Restaurante" EntitySet="Restaurante" />
+            <End Role="Comentario" EntitySet="Comentario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Comentari__ID_US__29572725" Association="Self.FK__Comentari__ID_US__29572725">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Comentario" EntitySet="Comentario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Restauran__ID_CO__398D8EEE" Association="Self.FK__Restauran__ID_CO__398D8EEE">
+            <End Role="Comida" EntitySet="Comida" />
+            <End Role="RestauranteComida" EntitySet="RestauranteComida" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Restauran__ID_RE__35BCFE0A" Association="Self.FK__Restauran__ID_RE__35BCFE0A">
+            <End Role="Restaurante" EntitySet="Restaurante" />
+            <End Role="RestauranteValoracion" EntitySet="RestauranteValoracion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Restauran__ID_RE__38996AB5" Association="Self.FK__Restauran__ID_RE__38996AB5">
+            <End Role="Restaurante" EntitySet="Restaurante" />
+            <End Role="RestauranteComida" EntitySet="RestauranteComida" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Restauran__ID_US__34C8D9D1" Association="Self.FK__Restauran__ID_US__34C8D9D1">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="RestauranteValoracion" EntitySet="RestauranteValoracion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UsuarioCo__ID_CO__31EC6D26" Association="Self.FK__UsuarioCo__ID_CO__31EC6D26">
+            <End Role="Comida" EntitySet="Comida" />
+            <End Role="UsuarioComida" EntitySet="UsuarioComida" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UsuarioCo__ID_US__30F848ED" Association="Self.FK__UsuarioCo__ID_US__30F848ED">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="UsuarioComida" EntitySet="UsuarioComida" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UsuarioRe__ID_RE__2E1BDC42" Association="Self.FK__UsuarioRe__ID_RE__2E1BDC42">
+            <End Role="Restaurante" EntitySet="Restaurante" />
+            <End Role="UsuarioRestaurante" EntitySet="UsuarioRestaurante" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UsuarioRe__ID_US__2D27B809" Association="Self.FK__UsuarioRe__ID_US__2D27B809">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="UsuarioRestaurante" EntitySet="UsuarioRestaurante" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RestaurantGoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Comentario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_RESTAURANTE" Type="Int32" />
+          <Property Name="ID_USUARIO" Type="Int32" />
+          <Property Name="COMENTARIO1" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Restaurante" Relationship="Self.FK__Comentari__ID_RE__2A4B4B5E" FromRole="Comentario" ToRole="Restaurante" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Comentari__ID_US__29572725" FromRole="Comentario" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Comida">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COMIDA1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="RestauranteComida" Relationship="Self.FK__Restauran__ID_CO__398D8EEE" FromRole="Comida" ToRole="RestauranteComida" />
+          <NavigationProperty Name="UsuarioComida" Relationship="Self.FK__UsuarioCo__ID_CO__31EC6D26" FromRole="Comida" ToRole="UsuarioComida" />
+        </EntityType>
+        <EntityType Name="Restaurante">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="UBICACION" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="VALORACION" Type="Int32" />
+          <Property Name="PRECIO" Type="Int32" />
+          <NavigationProperty Name="Comentario" Relationship="Self.FK__Comentari__ID_RE__2A4B4B5E" FromRole="Restaurante" ToRole="Comentario" />
+          <NavigationProperty Name="RestauranteValoracion" Relationship="Self.FK__Restauran__ID_RE__35BCFE0A" FromRole="Restaurante" ToRole="RestauranteValoracion" />
+          <NavigationProperty Name="RestauranteComida" Relationship="Self.FK__Restauran__ID_RE__38996AB5" FromRole="Restaurante" ToRole="RestauranteComida" />
+          <NavigationProperty Name="UsuarioRestaurante" Relationship="Self.FK__UsuarioRe__ID_RE__2E1BDC42" FromRole="Restaurante" ToRole="UsuarioRestaurante" />
+        </EntityType>
+        <EntityType Name="RestauranteComida">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_RESTAURANTE" Type="Int32" />
+          <Property Name="ID_COMIDA" Type="Int32" />
+          <NavigationProperty Name="Comida" Relationship="Self.FK__Restauran__ID_CO__398D8EEE" FromRole="RestauranteComida" ToRole="Comida" />
+          <NavigationProperty Name="Restaurante" Relationship="Self.FK__Restauran__ID_RE__38996AB5" FromRole="RestauranteComida" ToRole="Restaurante" />
+        </EntityType>
+        <EntityType Name="RestauranteValoracion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_USUARIO" Type="Int32" />
+          <Property Name="ID_RESTAURANTE" Type="Int32" />
+          <Property Name="VALOR" Type="Int32" />
+          <NavigationProperty Name="Restaurante" Relationship="Self.FK__Restauran__ID_RE__35BCFE0A" FromRole="RestauranteValoracion" ToRole="Restaurante" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Restauran__ID_US__34C8D9D1" FromRole="RestauranteValoracion" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CORREO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CONTRASENA" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Comentario" Relationship="Self.FK__Comentari__ID_US__29572725" FromRole="Usuario" ToRole="Comentario" />
+          <NavigationProperty Name="RestauranteValoracion" Relationship="Self.FK__Restauran__ID_US__34C8D9D1" FromRole="Usuario" ToRole="RestauranteValoracion" />
+          <NavigationProperty Name="UsuarioComida" Relationship="Self.FK__UsuarioCo__ID_US__30F848ED" FromRole="Usuario" ToRole="UsuarioComida" />
+          <NavigationProperty Name="UsuarioRestaurante" Relationship="Self.FK__UsuarioRe__ID_US__2D27B809" FromRole="Usuario" ToRole="UsuarioRestaurante" />
+        </EntityType>
+        <EntityType Name="UsuarioComida">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_USUARIO" Type="Int32" />
+          <Property Name="ID_COMIDA" Type="Int32" />
+          <NavigationProperty Name="Comida" Relationship="Self.FK__UsuarioCo__ID_CO__31EC6D26" FromRole="UsuarioComida" ToRole="Comida" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__UsuarioCo__ID_US__30F848ED" FromRole="UsuarioComida" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="UsuarioRestaurante">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_USUARIO" Type="Int32" />
+          <Property Name="ID_RESTAURANTE" Type="Int32" />
+          <NavigationProperty Name="Restaurante" Relationship="Self.FK__UsuarioRe__ID_RE__2E1BDC42" FromRole="UsuarioRestaurante" ToRole="Restaurante" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__UsuarioRe__ID_US__2D27B809" FromRole="UsuarioRestaurante" ToRole="Usuario" />
+        </EntityType>
+        <Association Name="FK__Comentari__ID_RE__2A4B4B5E">
+          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="0..1" />
+          <End Role="Comentario" Type="Self.Comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurante">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Comentario">
+              <PropertyRef Name="ID_RESTAURANTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Comentari__ID_US__29572725">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Comentario" Type="Self.Comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Comentario">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Restauran__ID_CO__398D8EEE">
+          <End Role="Comida" Type="Self.Comida" Multiplicity="0..1" />
+          <End Role="RestauranteComida" Type="Self.RestauranteComida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comida">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RestauranteComida">
+              <PropertyRef Name="ID_COMIDA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UsuarioCo__ID_CO__31EC6D26">
+          <End Role="Comida" Type="Self.Comida" Multiplicity="0..1" />
+          <End Role="UsuarioComida" Type="Self.UsuarioComida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comida">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UsuarioComida">
+              <PropertyRef Name="ID_COMIDA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Restauran__ID_RE__35BCFE0A">
+          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="0..1" />
+          <End Role="RestauranteValoracion" Type="Self.RestauranteValoracion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurante">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RestauranteValoracion">
+              <PropertyRef Name="ID_RESTAURANTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Restauran__ID_RE__38996AB5">
+          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="0..1" />
+          <End Role="RestauranteComida" Type="Self.RestauranteComida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurante">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RestauranteComida">
+              <PropertyRef Name="ID_RESTAURANTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UsuarioRe__ID_RE__2E1BDC42">
+          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="0..1" />
+          <End Role="UsuarioRestaurante" Type="Self.UsuarioRestaurante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurante">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UsuarioRestaurante">
+              <PropertyRef Name="ID_RESTAURANTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Restauran__ID_US__34C8D9D1">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="RestauranteValoracion" Type="Self.RestauranteValoracion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RestauranteValoracion">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UsuarioCo__ID_US__30F848ED">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="UsuarioComida" Type="Self.UsuarioComida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UsuarioComida">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UsuarioRe__ID_US__2D27B809">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="UsuarioRestaurante" Type="Self.UsuarioRestaurante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UsuarioRestaurante">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RestaurantGoEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Comentario" EntityType="Self.Comentario" />
+          <EntitySet Name="Comida" EntityType="Self.Comida" />
+          <EntitySet Name="Restaurante" EntityType="Self.Restaurante" />
+          <EntitySet Name="RestauranteComida" EntityType="Self.RestauranteComida" />
+          <EntitySet Name="RestauranteValoracion" EntityType="Self.RestauranteValoracion" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <EntitySet Name="UsuarioComida" EntityType="Self.UsuarioComida" />
+          <EntitySet Name="UsuarioRestaurante" EntityType="Self.UsuarioRestaurante" />
+          <AssociationSet Name="FK__Comentari__ID_RE__2A4B4B5E" Association="Self.FK__Comentari__ID_RE__2A4B4B5E">
+            <End Role="Restaurante" EntitySet="Restaurante" />
+            <End Role="Comentario" EntitySet="Comentario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Comentari__ID_US__29572725" Association="Self.FK__Comentari__ID_US__29572725">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Comentario" EntitySet="Comentario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Restauran__ID_CO__398D8EEE" Association="Self.FK__Restauran__ID_CO__398D8EEE">
+            <End Role="Comida" EntitySet="Comida" />
+            <End Role="RestauranteComida" EntitySet="RestauranteComida" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UsuarioCo__ID_CO__31EC6D26" Association="Self.FK__UsuarioCo__ID_CO__31EC6D26">
+            <End Role="Comida" EntitySet="Comida" />
+            <End Role="UsuarioComida" EntitySet="UsuarioComida" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Restauran__ID_RE__35BCFE0A" Association="Self.FK__Restauran__ID_RE__35BCFE0A">
+            <End Role="Restaurante" EntitySet="Restaurante" />
+            <End Role="RestauranteValoracion" EntitySet="RestauranteValoracion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Restauran__ID_RE__38996AB5" Association="Self.FK__Restauran__ID_RE__38996AB5">
+            <End Role="Restaurante" EntitySet="Restaurante" />
+            <End Role="RestauranteComida" EntitySet="RestauranteComida" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UsuarioRe__ID_RE__2E1BDC42" Association="Self.FK__UsuarioRe__ID_RE__2E1BDC42">
+            <End Role="Restaurante" EntitySet="Restaurante" />
+            <End Role="UsuarioRestaurante" EntitySet="UsuarioRestaurante" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Restauran__ID_US__34C8D9D1" Association="Self.FK__Restauran__ID_US__34C8D9D1">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="RestauranteValoracion" EntitySet="RestauranteValoracion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UsuarioCo__ID_US__30F848ED" Association="Self.FK__UsuarioCo__ID_US__30F848ED">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="UsuarioComida" EntitySet="UsuarioComida" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UsuarioRe__ID_US__2D27B809" Association="Self.FK__UsuarioRe__ID_US__2D27B809">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="UsuarioRestaurante" EntitySet="UsuarioRestaurante" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RestaurantGoModelStoreContainer" CdmEntityContainer="RestaurantGoEntities1">
+          <EntitySetMapping Name="Comentario">
+            <EntityTypeMapping TypeName="RestaurantGoModel.Comentario">
+              <MappingFragment StoreEntitySet="Comentario">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_RESTAURANTE" ColumnName="ID_RESTAURANTE" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="COMENTARIO1" ColumnName="COMENTARIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comida">
+            <EntityTypeMapping TypeName="RestaurantGoModel.Comida">
+              <MappingFragment StoreEntitySet="Comida">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="COMIDA1" ColumnName="COMIDA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Restaurante">
+            <EntityTypeMapping TypeName="RestaurantGoModel.Restaurante">
+              <MappingFragment StoreEntitySet="Restaurante">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="UBICACION" ColumnName="UBICACION" />
+                <ScalarProperty Name="VALORACION" ColumnName="VALORACION" />
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RestauranteComida">
+            <EntityTypeMapping TypeName="RestaurantGoModel.RestauranteComida">
+              <MappingFragment StoreEntitySet="RestauranteComida">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_RESTAURANTE" ColumnName="ID_RESTAURANTE" />
+                <ScalarProperty Name="ID_COMIDA" ColumnName="ID_COMIDA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RestauranteValoracion">
+            <EntityTypeMapping TypeName="RestaurantGoModel.RestauranteValoracion">
+              <MappingFragment StoreEntitySet="RestauranteValoracion">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="ID_RESTAURANTE" ColumnName="ID_RESTAURANTE" />
+                <ScalarProperty Name="VALOR" ColumnName="VALOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="RestaurantGoModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+                <ScalarProperty Name="CONTRASENA" ColumnName="CONTRASENA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsuarioComida">
+            <EntityTypeMapping TypeName="RestaurantGoModel.UsuarioComida">
+              <MappingFragment StoreEntitySet="UsuarioComida">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="ID_COMIDA" ColumnName="ID_COMIDA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsuarioRestaurante">
+            <EntityTypeMapping TypeName="RestaurantGoModel.UsuarioRestaurante">
+              <MappingFragment StoreEntitySet="UsuarioRestaurante">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="ID_RESTAURANTE" ColumnName="ID_RESTAURANTE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

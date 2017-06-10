@@ -1,0 +1,42 @@
+﻿@model RestaurantGo.Models.Comentario
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Comentario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.COMENTARIO1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COMENTARIO1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Restaurante.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Restaurante.NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario.NOMBRE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

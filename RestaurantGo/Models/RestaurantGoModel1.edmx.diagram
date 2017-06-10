@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e4086e7ba4c443969a42351415947c05" Name="Diagram1">
+        <EntityTypeShape EntityType="RestaurantGoModel.Comentario" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantGoModel.Comida" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantGoModel.Restaurante" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantGoModel.RestauranteComida" Width="1.5" PointX="6" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantGoModel.RestauranteValoracion" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantGoModel.Usuario" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantGoModel.UsuarioComida" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantGoModel.UsuarioRestaurante" Width="1.5" PointX="6" PointY="5.625" IsExpanded="true" />
+        <AssociationConnector Association="RestaurantGoModel.FK__Comentari__ID_RE__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantGoModel.FK__Comentari__ID_US__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantGoModel.FK__Restauran__ID_CO__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantGoModel.FK__UsuarioCo__ID_CO__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantGoModel.FK__Restauran__ID_RE__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantGoModel.FK__Restauran__ID_RE__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantGoModel.FK__UsuarioRe__ID_RE__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantGoModel.FK__Restauran__ID_US__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantGoModel.FK__UsuarioCo__ID_US__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantGoModel.FK__UsuarioRe__ID_US__2D27B809" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
