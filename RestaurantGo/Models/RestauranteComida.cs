@@ -11,13 +11,18 @@ namespace RestaurantGo.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class RestauranteComida
     {
         public int ID { get; set; }
-        public Nullable<int> ID_RESTAURANTE { get; set; }
-        public Nullable<int> ID_COMIDA { get; set; }
-    
+        [Required]
+        [Display(Name = "RESTAURANTE")]
+        public int ID_RESTAURANTE { get; set; }
+        [Required]
+        [Display(Name = "COMIDA")]
+        public int ID_COMIDA { get; set; }
+        
         public virtual Comida Comida { get; set; }
         public virtual Restaurante Restaurante { get; set; }
     }

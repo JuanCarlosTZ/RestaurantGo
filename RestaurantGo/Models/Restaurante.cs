@@ -11,7 +11,8 @@ namespace RestaurantGo.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Restaurante
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,11 +25,20 @@ namespace RestaurantGo.Models
         }
     
         public int ID { get; set; }
+
+        [Required]
         public string NOMBRE { get; set; }
+        [Required]
+        [Display(Name = "DIRECCIÓN")]
         public string DIRECCION { get; set; }
+
+        [Display(Name = "UBICACIÓN")]
         public string UBICACION { get; set; }
-        public Nullable<int> VALORACION { get; set; }
-        public Nullable<int> PRECIO { get; set; }
+
+        [Display(Name = "VALORACIÓN")]
+        public int VALORACION { get; set; }
+
+        public int PRECIO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comentario> Comentario { get; set; }

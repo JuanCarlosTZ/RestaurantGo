@@ -11,7 +11,8 @@ namespace RestaurantGo.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Usuario
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,8 +25,17 @@ namespace RestaurantGo.Models
         }
     
         public int ID { get; set; }
+
+        [Required]
         public string NOMBRE { get; set; }
+
+        [Required]
+        [DataType(DataType.EmailAddress)]
         public string CORREO { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        [Display(Name = "CONTRESAÑA")]
         public string CONTRASENA { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
