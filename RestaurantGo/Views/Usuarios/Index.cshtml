@@ -32,7 +32,7 @@
             @Html.DisplayFor(modelItem => item.CORREO)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CONTRASENA)
+            @Html.DisplayFor(modelItem => item.CONTRASENA, new { htmlAttributes = new { @class = "form-control" } })
         </td>
         <td>
             @Html.ActionLink("Editar", "Edit", new { id=item.ID }) |
