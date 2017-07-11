@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e4086e7ba4c443969a42351415947c05" Name="Diagram1">
+      <Diagram DiagramId="1211e32bdbbd45c1960d24b5c1019ca8" Name="Diagram1">
         <EntityTypeShape EntityType="RestaurantGoModel.Comentario" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="RestaurantGoModel.Comida" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="RestaurantGoModel.Restaurante" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />

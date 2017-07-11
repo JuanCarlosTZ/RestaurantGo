@@ -18,6 +18,10 @@ namespace RestaurantGo.Controllers
         public ActionResult Index()
         {
             return View(db.Restaurante.ToList());
+        }        // GET: Restaurantes
+        public ActionResult MapaSolo()
+        {
+            return View();
         }
 
         // GET: Restaurantes/Details/5
@@ -46,7 +50,7 @@ namespace RestaurantGo.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,NOMBRE,DIRECCION,UBICACION,VALORACION,PRECIO")] Restaurante restaurante)
+        public ActionResult Create([Bind(Include = "NOMBRE,DIRECCION,UBICACION,ID_UBICACION,PRECIO")] Restaurante restaurante)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +82,7 @@ namespace RestaurantGo.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,NOMBRE,DIRECCION,UBICACION,VALORACION,PRECIO")] Restaurante restaurante)
+        public ActionResult Edit([Bind(Include = "ID,NOMBRE,DIRECCION,UBICACION,ID_UBICACION,PRECIO")] Restaurante restaurante)
         {
             if (ModelState.IsValid)
             {

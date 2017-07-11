@@ -14,13 +14,23 @@
     <div class="form-horizontal">
         <h4>Restaurante</h4>
         <hr />
+
+        <input id="pac-input" class="controls" type="text"
+               placeholder="Enter a location">
+        <div id="map" class="form-group"></div>
+        <div id="infowindow-content">
+            <span id="place-name" class="title"></span><br>
+            Place ID <span id="place-id"></span><br>
+            <span id="place-address"></span>
+        </div>
+
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ID)
 
         <div class="form-group">
             @Html.LabelFor(model => model.NOMBRE, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.NOMBRE, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.NOMBRE, new { htmlAttributes = new { @id = "nombre", @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.NOMBRE, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -28,7 +38,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DIRECCION, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DIRECCION, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.DIRECCION, new { htmlAttributes = new { @id = "direccion", @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DIRECCION, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -36,23 +46,23 @@
         <div class="form-group">
             @Html.LabelFor(model => model.UBICACION, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.UBICACION, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.UBICACION, new { htmlAttributes = new { @id = "ubicacion", @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.UBICACION, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.VALORACION, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ID_UBICACION, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.VALORACION, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.VALORACION, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.ID_UBICACION, new { htmlAttributes = new { @id = "id_ubicacion", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ID_UBICACION, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.PRECIO, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PRECIO, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.PRECIO, new { htmlAttributes = new { @id = "precio", @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PRECIO, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -72,3 +82,5 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXhI09ZYTiaxmpuxNCgmp7BKABpOpuND4&libraries=places&callback=initMap"
+        async defer> </script>

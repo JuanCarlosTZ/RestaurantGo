@@ -1,4 +1,4 @@
-CREATE DATABASE RestaurantGo
+CREATE  DATABASE RestaurantGo
 GO
 
 USE RestaurantGo
@@ -19,8 +19,8 @@ CREATE TABLE Restaurante (
 	NOMBRE varchar(100)not null,
 	DIRECCION varchar(1000)not null,
 	UBICACION varchar(1000),
-	VALORACION int, 
-	PRECIO int,
+	ID_UBICACION varchar(100), 
+	PRECIO varchar(50),
 )
 
 

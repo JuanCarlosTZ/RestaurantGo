@@ -10,72 +10,72 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ID_RESTAURANTE" Type="int" />
-          <Property Name="ID_USUARIO" Type="int" />
-          <Property Name="COMENTARIO" Type="varchar" MaxLength="4000" />
+          <Property Name="ID_RESTAURANTE" Type="int" Nullable="false" />
+          <Property Name="ID_USUARIO" Type="int" Nullable="false" />
+          <Property Name="COMENTARIO" Type="varchar" MaxLength="4000" Nullable="false" />
         </EntityType>
         <EntityType Name="Comida">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="COMIDA" Type="varchar" MaxLength="100" />
+          <Property Name="COMIDA" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="Restaurante">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NOMBRE" Type="varchar" MaxLength="100" />
-          <Property Name="DIRECCION" Type="varchar" MaxLength="1000" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DIRECCION" Type="varchar" MaxLength="1000" Nullable="false" />
           <Property Name="UBICACION" Type="varchar" MaxLength="1000" />
-          <Property Name="VALORACION" Type="int" />
-          <Property Name="PRECIO" Type="int" />
+          <Property Name="ID_UBICACION" Type="varchar" MaxLength="100" />
+          <Property Name="PRECIO" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="RestauranteComida">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ID_RESTAURANTE" Type="int" />
-          <Property Name="ID_COMIDA" Type="int" />
+          <Property Name="ID_RESTAURANTE" Type="int" Nullable="false" />
+          <Property Name="ID_COMIDA" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="RestauranteValoracion">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ID_USUARIO" Type="int" />
-          <Property Name="ID_RESTAURANTE" Type="int" />
-          <Property Name="VALOR" Type="int" />
+          <Property Name="ID_USUARIO" Type="int" Nullable="false" />
+          <Property Name="ID_RESTAURANTE" Type="int" Nullable="false" />
+          <Property Name="VALOR" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NOMBRE" Type="varchar" MaxLength="100" />
-          <Property Name="CORREO" Type="varchar" MaxLength="100" />
-          <Property Name="CONTRASENA" Type="varchar" MaxLength="255" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CORREO" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CONTRASENA" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="UsuarioComida">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ID_USUARIO" Type="int" />
-          <Property Name="ID_COMIDA" Type="int" />
+          <Property Name="ID_USUARIO" Type="int" Nullable="false" />
+          <Property Name="ID_COMIDA" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="UsuarioRestaurante">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ID_USUARIO" Type="int" />
-          <Property Name="ID_RESTAURANTE" Type="int" />
+          <Property Name="ID_USUARIO" Type="int" Nullable="false" />
+          <Property Name="ID_RESTAURANTE" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK__Comentari__ID_RE__2A4B4B5E">
-          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="0..1" />
+          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="1" />
           <End Role="Comentario" Type="Self.Comentario" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Restaurante">
@@ -87,7 +87,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Comentari__ID_US__29572725">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Comentario" Type="Self.Comentario" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuario">
@@ -99,7 +99,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Restauran__ID_CO__398D8EEE">
-          <End Role="Comida" Type="Self.Comida" Multiplicity="0..1" />
+          <End Role="Comida" Type="Self.Comida" Multiplicity="1" />
           <End Role="RestauranteComida" Type="Self.RestauranteComida" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Comida">
@@ -111,7 +111,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Restauran__ID_RE__35BCFE0A">
-          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="0..1" />
+          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="1" />
           <End Role="RestauranteValoracion" Type="Self.RestauranteValoracion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Restaurante">
@@ -123,7 +123,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Restauran__ID_RE__38996AB5">
-          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="0..1" />
+          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="1" />
           <End Role="RestauranteComida" Type="Self.RestauranteComida" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Restaurante">
@@ -135,7 +135,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Restauran__ID_US__34C8D9D1">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="RestauranteValoracion" Type="Self.RestauranteValoracion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuario">
@@ -147,7 +147,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__UsuarioCo__ID_CO__31EC6D26">
-          <End Role="Comida" Type="Self.Comida" Multiplicity="0..1" />
+          <End Role="Comida" Type="Self.Comida" Multiplicity="1" />
           <End Role="UsuarioComida" Type="Self.UsuarioComida" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Comida">
@@ -159,7 +159,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__UsuarioCo__ID_US__30F848ED">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="UsuarioComida" Type="Self.UsuarioComida" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuario">
@@ -171,7 +171,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__UsuarioRe__ID_RE__2E1BDC42">
-          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="0..1" />
+          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="1" />
           <End Role="UsuarioRestaurante" Type="Self.UsuarioRestaurante" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Restaurante">
@@ -183,7 +183,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__UsuarioRe__ID_US__2D27B809">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="UsuarioRestaurante" Type="Self.UsuarioRestaurante" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuario">
@@ -254,9 +254,9 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ID_RESTAURANTE" Type="Int32" />
-          <Property Name="ID_USUARIO" Type="Int32" />
-          <Property Name="COMENTARIO1" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="ID_RESTAURANTE" Type="Int32" Nullable="false" />
+          <Property Name="ID_USUARIO" Type="Int32" Nullable="false" />
+          <Property Name="COMENTARIO1" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Restaurante" Relationship="Self.FK__Comentari__ID_RE__2A4B4B5E" FromRole="Comentario" ToRole="Restaurante" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK__Comentari__ID_US__29572725" FromRole="Comentario" ToRole="Usuario" />
         </EntityType>
@@ -265,7 +265,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="COMIDA1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="COMIDA1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="RestauranteComida" Relationship="Self.FK__Restauran__ID_CO__398D8EEE" FromRole="Comida" ToRole="RestauranteComida" />
           <NavigationProperty Name="UsuarioComida" Relationship="Self.FK__UsuarioCo__ID_CO__31EC6D26" FromRole="Comida" ToRole="UsuarioComida" />
         </EntityType>
@@ -274,11 +274,11 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="DIRECCION" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UBICACION" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <Property Name="VALORACION" Type="Int32" />
-          <Property Name="PRECIO" Type="Int32" />
+          <Property Name="ID_UBICACION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PRECIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Comentario" Relationship="Self.FK__Comentari__ID_RE__2A4B4B5E" FromRole="Restaurante" ToRole="Comentario" />
           <NavigationProperty Name="RestauranteValoracion" Relationship="Self.FK__Restauran__ID_RE__35BCFE0A" FromRole="Restaurante" ToRole="RestauranteValoracion" />
           <NavigationProperty Name="RestauranteComida" Relationship="Self.FK__Restauran__ID_RE__38996AB5" FromRole="Restaurante" ToRole="RestauranteComida" />
@@ -289,8 +289,8 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ID_RESTAURANTE" Type="Int32" />
-          <Property Name="ID_COMIDA" Type="Int32" />
+          <Property Name="ID_RESTAURANTE" Type="Int32" Nullable="false" />
+          <Property Name="ID_COMIDA" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Comida" Relationship="Self.FK__Restauran__ID_CO__398D8EEE" FromRole="RestauranteComida" ToRole="Comida" />
           <NavigationProperty Name="Restaurante" Relationship="Self.FK__Restauran__ID_RE__38996AB5" FromRole="RestauranteComida" ToRole="Restaurante" />
         </EntityType>
@@ -299,9 +299,9 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ID_USUARIO" Type="Int32" />
-          <Property Name="ID_RESTAURANTE" Type="Int32" />
-          <Property Name="VALOR" Type="Int32" />
+          <Property Name="ID_USUARIO" Type="Int32" Nullable="false" />
+          <Property Name="ID_RESTAURANTE" Type="Int32" Nullable="false" />
+          <Property Name="VALOR" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Restaurante" Relationship="Self.FK__Restauran__ID_RE__35BCFE0A" FromRole="RestauranteValoracion" ToRole="Restaurante" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK__Restauran__ID_US__34C8D9D1" FromRole="RestauranteValoracion" ToRole="Usuario" />
         </EntityType>
@@ -310,9 +310,9 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="CORREO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="CONTRASENA" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CORREO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CONTRASENA" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Comentario" Relationship="Self.FK__Comentari__ID_US__29572725" FromRole="Usuario" ToRole="Comentario" />
           <NavigationProperty Name="RestauranteValoracion" Relationship="Self.FK__Restauran__ID_US__34C8D9D1" FromRole="Usuario" ToRole="RestauranteValoracion" />
           <NavigationProperty Name="UsuarioComida" Relationship="Self.FK__UsuarioCo__ID_US__30F848ED" FromRole="Usuario" ToRole="UsuarioComida" />
@@ -323,8 +323,8 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ID_USUARIO" Type="Int32" />
-          <Property Name="ID_COMIDA" Type="Int32" />
+          <Property Name="ID_USUARIO" Type="Int32" Nullable="false" />
+          <Property Name="ID_COMIDA" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Comida" Relationship="Self.FK__UsuarioCo__ID_CO__31EC6D26" FromRole="UsuarioComida" ToRole="Comida" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK__UsuarioCo__ID_US__30F848ED" FromRole="UsuarioComida" ToRole="Usuario" />
         </EntityType>
@@ -333,13 +333,13 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ID_USUARIO" Type="Int32" />
-          <Property Name="ID_RESTAURANTE" Type="Int32" />
+          <Property Name="ID_USUARIO" Type="Int32" Nullable="false" />
+          <Property Name="ID_RESTAURANTE" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Restaurante" Relationship="Self.FK__UsuarioRe__ID_RE__2E1BDC42" FromRole="UsuarioRestaurante" ToRole="Restaurante" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK__UsuarioRe__ID_US__2D27B809" FromRole="UsuarioRestaurante" ToRole="Usuario" />
         </EntityType>
         <Association Name="FK__Comentari__ID_RE__2A4B4B5E">
-          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="0..1" />
+          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="1" />
           <End Role="Comentario" Type="Self.Comentario" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Restaurante">
@@ -351,7 +351,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Comentari__ID_US__29572725">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Comentario" Type="Self.Comentario" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuario">
@@ -363,7 +363,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Restauran__ID_CO__398D8EEE">
-          <End Role="Comida" Type="Self.Comida" Multiplicity="0..1" />
+          <End Role="Comida" Type="Self.Comida" Multiplicity="1" />
           <End Role="RestauranteComida" Type="Self.RestauranteComida" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Comida">
@@ -375,7 +375,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__UsuarioCo__ID_CO__31EC6D26">
-          <End Role="Comida" Type="Self.Comida" Multiplicity="0..1" />
+          <End Role="Comida" Type="Self.Comida" Multiplicity="1" />
           <End Role="UsuarioComida" Type="Self.UsuarioComida" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Comida">
@@ -387,7 +387,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Restauran__ID_RE__35BCFE0A">
-          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="0..1" />
+          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="1" />
           <End Role="RestauranteValoracion" Type="Self.RestauranteValoracion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Restaurante">
@@ -399,7 +399,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Restauran__ID_RE__38996AB5">
-          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="0..1" />
+          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="1" />
           <End Role="RestauranteComida" Type="Self.RestauranteComida" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Restaurante">
@@ -411,7 +411,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__UsuarioRe__ID_RE__2E1BDC42">
-          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="0..1" />
+          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="1" />
           <End Role="UsuarioRestaurante" Type="Self.UsuarioRestaurante" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Restaurante">
@@ -423,7 +423,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Restauran__ID_US__34C8D9D1">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="RestauranteValoracion" Type="Self.RestauranteValoracion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuario">
@@ -435,7 +435,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__UsuarioCo__ID_US__30F848ED">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="UsuarioComida" Type="Self.UsuarioComida" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuario">
@@ -447,7 +447,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__UsuarioRe__ID_US__2D27B809">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="UsuarioRestaurante" Type="Self.UsuarioRestaurante" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuario">
@@ -458,7 +458,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="RestaurantGoEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="RestaurantGoEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Comentario" EntityType="Self.Comentario" />
           <EntitySet Name="Comida" EntityType="Self.Comida" />
           <EntitySet Name="Restaurante" EntityType="Self.Restaurante" />
@@ -513,7 +513,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="RestaurantGoModelStoreContainer" CdmEntityContainer="RestaurantGoEntities1">
+        <EntityContainerMapping StorageEntityContainer="RestaurantGoModelStoreContainer" CdmEntityContainer="RestaurantGoEntities">
           <EntitySetMapping Name="Comentario">
             <EntityTypeMapping TypeName="RestaurantGoModel.Comentario">
               <MappingFragment StoreEntitySet="Comentario">
@@ -539,7 +539,7 @@
                 <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
                 <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
                 <ScalarProperty Name="UBICACION" ColumnName="UBICACION" />
-                <ScalarProperty Name="VALORACION" ColumnName="VALORACION" />
+                <ScalarProperty Name="ID_UBICACION" ColumnName="ID_UBICACION" />
                 <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
               </MappingFragment>
             </EntityTypeMapping>

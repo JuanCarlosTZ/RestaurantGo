@@ -9,13 +9,24 @@
 <div>
     <h4>Restaurante</h4>
     <hr />
+
+
+    <div id="map" class="form-group"></div>
+    <div id="infowindow-content">
+        <span id="place-name" class="title"></span><br>
+        Place ID <span id="place-id"></span><br>
+        <span id="place-address"></span>
+    </div>
+
+  
+
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.NOMBRE)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NOMBRE)
+            <span id="nombre">@Html.DisplayFor(model => model.NOMBRE)</span>
         </dd>
 
         <dt>
@@ -30,16 +41,17 @@
             @Html.DisplayNameFor(model => model.UBICACION)
         </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.UBICACION)
+        <dd> 
+            <span id="ubicacion">@Html.DisplayFor(model => model.UBICACION)</span>
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.VALORACION)
+                @Html.DisplayNameFor(model => model.ID_UBICACION)
+
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.VALORACION)
+            <span id="id_ubicacion">@Html.DisplayFor(model => model.ID_UBICACION)</span>
         </dd>
 
         <dt>
@@ -47,7 +59,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PRECIO)
+            @Html.DisplayFor(model => model.PRECIO )
         </dd>
 
     </dl>
@@ -56,3 +68,5 @@
     @Html.ActionLink("Editar", "Edit", new { id = Model.ID }) |
     @Html.ActionLink("Volver al Listado", "Index")
 </p>
+
+
